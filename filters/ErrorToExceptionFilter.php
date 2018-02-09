@@ -2,6 +2,7 @@
 
 namespace filsh\yii2\oauth2server\filters;
 
+use OAuth2\Response;
 use Yii;
 use yii\base\Controller;
 
@@ -32,5 +33,10 @@ class ErrorToExceptionFilter extends \yii\base\Behavior
                     $response->getParameter('error_uri'));
             }
         }
+    }
+
+    protected function getErrorMessage(Response $response)
+    {
+        return $response->getParameter('error');
     }
 }
